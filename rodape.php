@@ -2,6 +2,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $('#searchName').bind('keyup', function(){
-        $('#formSearchName').delay(600).submit();
+       clearTimeout(timer)
+       timer = setTimeout(submitForm, 1000)
     });
+    function submitForm(){
+        $('#formSearchName').submit();
+    }
 </script>

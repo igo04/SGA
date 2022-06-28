@@ -38,23 +38,55 @@
                     <td><?= $atendente->email ?></td>
                     <td><?= $atendente->nota ?></td>
                     <td><?= $atendente->created_at ?></td>
-                    <td><a href="formulario-edita-atendente.php?id=<?= $atendente->id ?>">Editar</a> </td>
-                    <td><a onclick="return confirm('Deseja realmente excluir?');" href="excluirAtendente.php?id=<?= $atendente->id ?>"></a>Excluir</td>
+                    <td><a href="#" onclick="gerirUsuario(<?= $atendente->id ?>, 'edit');">Editar</a> </td>
+                    <td><a onclick="return confirm('Deseja realmente excluir?') ? gerirUsuario(<?= $atendente->id ?>, 'del'): '';" href="#"></a>Excluir</td>
                 </tr>
                <?php endforeach; ?> 
              </tbody>
+             <?php if(isset($notificacao)) : ?>
              <tfoot>
                 <tr>
-                    <td colspan="7"><?= isset($_COOKIE[ 'notify']) ? $_COOKIE['notify']: '' ?></td>
+                    <td colspan="7"><?= isset($_COOKIE[ 'notify']) ?></td>
                 </tr>
 
 
              </tfoot>
+             <?php endif; ?>
 
         </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <?php include("rodape.php"); ?>
+    <script> 
+
+      window.post = function(data){
+        return fetch(
+          'set-session.php',
+          {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify(data)
+          }
+        )
+        .then(response =>{
+          console.dir(response,`Requisição completa! Resposta:`);
+        })
+
+      }
+
+        function gerirUsuario(id, action){
+        
+        post({data : id}); 
+
+        url = 'excluirAtendente.php';
+        if(action === 'edit')
+          url = 'formulario-edita-atendente.php';
+
+          window.location.href = url;
+      }
+  
+    
+    </script>
   </body>
 
 </html>

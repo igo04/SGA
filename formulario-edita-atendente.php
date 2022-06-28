@@ -3,8 +3,9 @@
 
     include('config.php');
     require_once('.repository/AtendenteRepository.php');
-    $atendente = fnLocalizaAtendentePorId($id);
-    $id= filter_input(INPUT_GET,'id', FILTER_SANITIZE_NUMBER_INT);
+    $atendente = fnLocalizaAtendentePorId($_SESSION['id']);
+
+   
 ?>
 
 <!doctype html>
