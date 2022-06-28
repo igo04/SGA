@@ -14,6 +14,8 @@
         $msg = "Falha na Gravação";
     }
 
+    $_SESSION['id'] = $id;
+    $page = "formulario-edita-atendente.php";
     setcookie('notify', $msg, time() + 20);
     header("location:formulario-edita-atendente.php?id=$id");
     exit;

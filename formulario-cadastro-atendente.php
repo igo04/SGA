@@ -17,17 +17,17 @@
             <form action="registraAtendente.php" method="post" class="form">
                 <div class="mb-3 form-group">
                     <label for="nomeId" class="form-label">Nome</label>
-                    <input type="text" name="nome" id="nomeId" class="form-control" placeholder="Informe o nome">
+                    <input type="text" name="nome" id="nomeId" class="form-control" placeholder="Informe o nome" required>
                     <div id="helperNome" class="form-text">Informe o nome completo</div>
                 </div>
                 <div class="mb-3 form-group">
                     <label for="emailId" class="form-label">E-mail</label>
-                    <input type="email" name="email" id="emailId" class="form-control" placeholder="Informe o e-mail">
+                    <input type="email" name="email" id="emailId" class="form-control" placeholder="Informe o e-mail" required>
                     <div id="helperEmail" class="form-text">Informe o e-mail</div>
                 </div>
                 <div class="mb-3 form-group">
                     <label for="notaId" class="form-label">nota</label>
-                    <input type="text" name="nota" id="notaId" class="form-control" placeholder="Informe a nota">
+                    <input type="number" name="nota" id="notaId" class="form-control" placeholder="Informe a nota" required>
                     <div id="helperNota" class="form-text">Informe a nota</div>
                 </div>
                 <button type="submit" class="btn btn-dark">Enviar</button>
