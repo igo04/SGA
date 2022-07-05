@@ -9,6 +9,8 @@ create or replace table atendente(
     create_at timestamp not null default current_timestamp
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+alter table atendente add column foto text after nome default "" not null;
+
 create or replace table atendente(
     id int primary key auto_increment,
     email varchar(250) not null unique,

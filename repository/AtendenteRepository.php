@@ -2,13 +2,14 @@
 
      require_once('Connection.php');    
      
-     function fnaddAtendente($nome, $email, $nota) {
+     function fnaddAtendente($nome, $foto, $email, $nota) {
             $con = getConnection();
             
-            $sql = "insert into Atendente (nome, email, nota) values (:pNome, :pEmail, :pNota)";
+            $sql = "insert into Atendente (nome, foto, email, nota) values (:pNome, :pFoto, :pEmail, :pNota)";
 
             $stmt = $con->prepare($sql);
             $stmt -> bindParam(":pNome",$nome);
+            $stmt -> bindParam(":pFoto",$foto);
             $stmt -> bindParam(":pEmail",$email);
             $stmt -> bindParam(":pNota",$nota);
 
@@ -67,13 +68,15 @@
 
     require_once('Connection.php');    
      
-    function fnUpdateAtendente($id, $nome, $email, $nota) {
+    function fnUpdateAtendente($id, $nome, $foto, $email, $nota) {
            $con = getConnection();
            
-           $sql = "update Atendente set nome= :pNome, email= :pEmail , nota= :pNota where id = :pID";
+           $sql = "update Atendente set nome= :pNome, foto = :pFoto, email= :pEmail , nota= :pNota where id = :pID";
 
            $stmt = $con->prepare($sql);
            $stmt -> bindParam(":pID",$id);
+           $stmt -> bindParam(":pNome",$nome);
+           $stmt -> bindParam(":pFoto",$foto);
            $stmt -> bindParam(":pEmail",$email);
            $stmt -> bindParam(":pNota",$nota);
 
